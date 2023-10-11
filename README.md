@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a scaffold for an FCL NextJS Dapp on the Flow Blockchain.
 
-## Getting Started
+## Features Provided
 
-First, run the development server:
+- FCL setup and configuration
+- "flow dev" integration for automatic local account creation and contract deployment
+- Wallet Discovery (including Dev Wallet on Emulator)
+- CLI private key separation for security
+- Flow.json loading for contract placeholders
+- Authentication
+- CDC file loader
+- Custom hooks
+- Deployment 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Featues TODO
+
+- Mainnet deployment
+- JS Testing
+
+## Running the App
+
+First run:
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Local with Flow Dev, the Emulator, and Dev Wallet
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Run the following to run Flow Dev, the Emulator, and Dev Wallet:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+npm run dev:local
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Note: Flow Dev will will automatically create new accounts and deploy for you while developing. Your flow.json will be updated automatically. Committing these changes for local development is unncessary.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Testnet
 
-## Learn More
+If you haven't yet created a testnet account, in the CLI run:
 
-To learn more about Next.js, take a look at the following resources:
+```
+flow accounts create
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow the steps and select testnet. This will create a `[name].pkey` file (make sure this is gitignored) and add your account to flow.json.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Then in `flow.json`, add the contracts you'd like to be deployed to testnet under this account:
 
-## Deploy on Vercel
+```
+// Inside of "deployments"
+"testnet": {
+  "testnet-account": [
+    "HelloWorld"
+  ]
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Then run:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm run dev:testnet:deploy
+``` 
+
+Whenever you need to redeploy changed contracts to Testnet while seeing the diff between deployed contracts and updates being pushed, you can run:
+
+```
+npm run dev:testnet:update
+```
