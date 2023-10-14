@@ -11,19 +11,23 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { useFlow } from "../context/FlowContext";
+import { useAccount } from "@particle-network/connect-react-ui";
+
 
 const AiChat = () => {
   const [chatHistories, setChatHistories] = useState([]);
+  console.log(chatHistories)
   const [selectedCommunity, setSelectedCommunity] = useState(null);
   const [text, setText] = useState("");
   const { currentUser } = useFlow();
+  const account = useAccount()
 
   useEffect(() => {
     const fetchChat = async () => {
-      if (currentUser?.addr) {
+      if (account) {
         const q = query(
           collection(db, "chatrooms"),
-          where("userId", "==", currentUser.addr),
+          where("userId", "==", account),
           orderBy("created_at")
         );
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -40,7 +44,7 @@ const AiChat = () => {
       }
     };
     fetchChat();
-  }, [currentUser]);
+  }, [account]);
 
   return (
     <DefaultLayout>

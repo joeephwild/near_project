@@ -4,6 +4,7 @@ import {
   UserGroupIcon,
   ChipIcon,
   ChatAlt2Icon,
+  ArchiveIcon,
 } from "@heroicons/react/solid";
 import {
   chinese,
@@ -46,8 +47,8 @@ export const SidebarTab = [
     route: "/aichat",
   },
   {
-    name: "Chat",
-    icons: ChatAlt2Icon,
+    name: "Store",
+    icons: ArchiveIcon,
     active: "chat",
     route: "/Chat",
   },

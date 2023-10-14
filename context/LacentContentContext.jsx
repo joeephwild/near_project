@@ -1,7 +1,7 @@
 import { useAccount, useParticleProvider } from '@particle-network/connect-react-ui';
 import { createContext, useContext, useState, useEffect} from 'react'
 import { LacentContentAbi, LacentContentAddress } from '../constants/contract';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 
 const LacentContentContext = createContext()
 
@@ -61,6 +61,17 @@ export const LacentContentProvider = ({ children }) => {
         }
       }
 
+      const retriveBuyers = async() => {
+        try {
+            const contract = await conectwithContract();
+            const buyers = await contract.retrieveBuyers()
+            console.log(buyers)
+            return buyers
+        } catch (error) {
+            console.log(error)
+        }
+      }
+
       const getAllContent = async() => {   
         try {
             const contract = await conectwithContract();
@@ -73,6 +84,26 @@ export const LacentContentProvider = ({ children }) => {
         }
       }
 
+      const purcahseAContent = async(_id, amount) => {
+        try {
+            const contract = await conectwithContract();
+            const tx = await contract.purchaseContent(
+                _id,
+                {
+                  value: BigNumber.from(amount),
+                  // gasLimit: 1000000,
+                }
+            )
+            console.log(tx.hash)
+            await tx.wait()
+            setModalOpen(true)
+            return `https://explorer.testnet.aurora.dev/tx/${tx.hash}`
+        } catch (error) {
+            console.log(error.message)
+            alert(error.message)
+        }
+      }
+
       useEffect(() => {
             getAllContent()
       }, [account])
@@ -82,7 +113,8 @@ export const LacentContentProvider = ({ children }) => {
             modalOpen,
             setModalOpen,
             createAContent,
-            allContent
+            allContent,
+            purcahseAContent
         }}>
             {children}
         </LacentContentContext.Provider>

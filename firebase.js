@@ -4,21 +4,21 @@ import { getAuth, EmailAuthProvider } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyACWp-N8oSQIEDEfr-WkGPxIwYwGZydij4",
 
-  authDomain: "lacent-7a6b4.firebaseapp.com",
+  apiKey: "AIzaSyD9zneTyHyRJalxiBBXHHep3BUbYo6GjfQ",
 
-  databaseURL: "https://lacent-7a6b4-default-rtdb.firebaseio.com",
+  authDomain: "lacent20-f6930.firebaseapp.com",
 
-  projectId: "lacent-7a6b4",
+  projectId: "lacent20-f6930",
 
-  storageBucket: "lacent-7a6b4.appspot.com",
+  storageBucket: "lacent20-f6930.appspot.com",
 
-  messagingSenderId: "388128287208",
+  messagingSenderId: "179571536605",
 
-  appId: "1:388128287208:web:22e1bf229fc29edb909c5d"
+  appId: "1:179571536605:web:a1909ba9b2866c9f46e134"
 
 };
+
 
 let app;
 if (!getApps().length) {

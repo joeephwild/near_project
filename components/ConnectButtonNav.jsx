@@ -34,15 +34,30 @@ import { useUser } from '../context/ProfileContext';
                 </button>
               </Link>
 
-              <Link href="/profileOnboarding">
-                <Image
-                  src={userLearnImage}
-                  alt="language"
-                  width={234}
-                  height={234}
-                  className="w-[35.2px] h-[24px] object-contain"
-                />
-              </Link>
+                 {userLearnImage && (
+                           
+                              <Image
+                                src={userLearnImage}
+                                alt="language"
+                                width={234}
+                                height={234}
+                                className="w-[35.2px] h-[24px] object-contain"
+                              />
+                        
+                  )}
+
+                  {!userLearnImage && (
+                              <Link href="/profileOnboarding">
+                              <Image
+                                src={korean}
+                                alt="language"
+                                width={234}
+                                height={234}
+                                className="w-[35.2px] h-[24px] object-contain"
+                              />
+                            </Link>
+                    )}
+
 
               <BellIcon className="text-[#667185] w-[28px]" />
 

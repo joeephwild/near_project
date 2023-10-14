@@ -4,11 +4,14 @@ import fetchAIResponse from "../../lib/mindb";
 import { db } from "../../firebase";
 import { PaperAirplaneIcon } from "@heroicons/react/solid";
 import { useFlow } from "../../context/FlowContext";
+import { useAccount } from "@particle-network/connect-react-ui";
+import { useUser } from "../../context/ProfileContext";
 
 
 const InputBox = ({ setText, text }) => {
   const [loading, setIsLoading] = useState(false);
-  const { currentUser } = useFlow();
+  const { accountName }  = useUser()
+  const account = useAccount()
   const sendMessage = async () => {
     try {
       if (text.trim() === "") return alert("input a message");
@@ -18,15 +21,15 @@ const InputBox = ({ setText, text }) => {
       const docRef = await addDoc(collection(db, "chatrooms"), {
         role: "user",
         message: text,
-        userId: currentUser?.addr,
+        userId: account,
         created_at: serverTimestamp(), // Use serverTimestamp() to set the timestamp
       });
-      const response = await fetchAIResponse(text);
+      const response = await fetchAIResponse(text, accountName);
       console.log(response)
       await addDoc(collection(db, "chatrooms"), {
         role: "ai",
         message: response,
-        userId: currentUser?.addr,
+        userId: account,
         created_at: serverTimestamp(), // Use serverTimestamp() for the AI response as well
       });
 
