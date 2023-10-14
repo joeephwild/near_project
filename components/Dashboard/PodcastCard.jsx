@@ -1,30 +1,42 @@
-import { ClockIcon, PlayIcon } from "@heroicons/react/solid";
-import Image, { StaticImageData } from "next/image";
 import React from "react";
+import Image from "next/image";
+import { ClockIcon, PlayIcon } from "@heroicons/react/solid";
 
-const PodcastCard = ({ audio_file, author, image, name, desc }) => {
+const PodcastCard = ({
+  contentImage,
+  contentName,
+  contentDescription,
+  audio_file,
+  author,
+}) => {
   return (
-    <div className="bg-white cursor-pointer w-full py-4 px-4 shadow-md rounded-lg">
-      <div className="flex items-center w-full">
-        <div className="w-20 h-20">
-          <Image src={image} alt={name} className="rounded-lg" />
+    <div className="bg-white cursor-pointer w-full p-4 shadow-md rounded-lg">
+      <div className="flex items-center">
+        <div className="w-24 h-24">
+          <Image
+            src={contentImage}
+            alt={contentName}
+            width={96}
+            height={96}
+            className="rounded-lg"
+          />
         </div>
-        <div className="ml-4 flex flex-col">
-          <span className="text-lg font-medium text-black">{name}</span>
-          <span className="text-sm font-normal w-[356px] text-gray-600">{desc}</span>
+        <div className="ml-4 flex flex-col flex-grow">
+          <span className="text-xl font-semibold text-black">{contentName}</span>
+          <span className="text-sm text-gray-600 mt-2">{contentDescription}</span>
           <div className="flex items-center mt-2">
             <div className="flex items-center text-Orange">
               <ClockIcon className="w-4 h-4" />
-              <span className="ml-1 font-medium">5:00</span>
+              <span className="ml-2 font-medium">5:00</span>
             </div>
             <span className="ml-4 text-sm font-medium">
               Learn the perfect French accent
             </span>
           </div>
         </div>
-        <button className="bg-black text-Accent flex items-center py-2 px-4 ml-auto rounded-lg">
-          <span className="mr-2 text-[12px]">Play Now</span>
-          <PlayIcon className="w-4 h-4" />
+        <button className="bg-black text-Accent flex items-center py-2 px-4 rounded-lg">
+          <PlayIcon className="w-5 h-5 mr-2" />
+          <span className="text-sm">Play Now</span>
         </button>
       </div>
     </div>

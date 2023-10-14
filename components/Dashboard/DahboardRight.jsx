@@ -5,8 +5,10 @@ import AllMentorCard from "./AllMentorCard";
 import PodcastCard from "./PodcastCard";
 import { Podcast } from "../../utils";
 import AllCommunitiesCard from "./AllCommunityCard";
+import { useLacentContent } from "../../context/LacentContentContext";
 
 const DahboardRight = () => {
+  const { allContent }= useLacentContent()
   return (
     <>
       <span className="text-[28px] text-Grey/900">Dashboard</span>
@@ -48,7 +50,7 @@ const DahboardRight = () => {
           </div>
         </div>
         <div className="flex flex-col items-center space-y-[24px]">
-          {Podcast.slice(0, 3).map((item, i) => (
+          {allContent.slice(0, 3).map((item, i) => (
             <PodcastCard key={i} {...item} />
           ))}
         </div>

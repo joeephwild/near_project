@@ -83,35 +83,35 @@ export const mentors = [
 
 export const languages = [
   {
-    image: france,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffrance.e6360013.png&w=128&q=75",
     name: "French",
   },
   {
-    image: english,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fenglish.7f45068e.png&w=128&q=75",
     name: "English",
   },
   {
-    image: polish,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpolish.ac41e377.png&w=128&q=75",
     name: "Polish",
   },
   {
-    image: korean,
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_South_Korea.png",
     name: "Korean",
   },
   {
-    image: spanish,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspanish.a1908c03.png&w=128&q=75",
     name: "Spanish",
   },
   {
-    image: german,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgerman.1a4c77a4.png&w=128&q=75",
     name: "German",
   },
   {
-    image: chinese,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fchinese.2b995ea2.png&w=128&q=75",
     name: "Chinese",
   },
   {
-    image: dutch,
+    image: "https://di-hack.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdutch.05b16c3d.png&w=128&q=75",
     name: "Dutch",
   },
 ];

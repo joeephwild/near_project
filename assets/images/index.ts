@@ -19,6 +19,10 @@ import hero from "./hero1.png";
 import hero2 from "./hero2.png";
 import flow from "./flow.png";
 import crying from "./crying.png";
+import main from './main.png'
+import plant from './plant.png'
+import boy from './image.png'
+import success from './success.png'
 
 export {
   logo,
@@ -42,4 +46,8 @@ export {
   hero2,
   flow,
   crying,
+  main,
+  plant,
+  boy,
+  success
 };

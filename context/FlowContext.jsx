@@ -14,16 +14,11 @@ export const FlowProvider = ({ children }) => {
   const [active, setActive] = useState("learn");
   const [modalOpen, setModalOpen] = useState(false);
   const route = useRouter();
-  const {connect, disconnect, isConnected, accounts } = useWallet()
 
   // Log in function
   const logIn = async () => {
     try {
-      if(!isConnected){
-    const RES =    connect()
-        setCurrentUser(accounts)
-        console.log(RES)
-      }
+     
     } catch (error) {
       alert("error connectting wallet");
       console.error(error);
@@ -42,7 +37,7 @@ export const FlowProvider = ({ children }) => {
   // // Effect to initialize Magic when the component mounts
   useEffect(() => {
     const getCurrentUser = async () => {
-    if(isConnected){}
+
     };
     getCurrentUser();
   }, [currentUser]);
@@ -57,8 +52,6 @@ export const FlowProvider = ({ children }) => {
         active,
         modalOpen,
         setModalOpen,
-        // openWallet,
-        isConnected
       }}
     >
       {children}

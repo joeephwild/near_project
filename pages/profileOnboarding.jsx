@@ -3,39 +3,41 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { logo } from "../assets/images";
 import { languages } from "../utils";
+import { useUser } from "../context/ProfileContext";
 
 const ProfileOnboarding = () => {
-  const [selectedSpeakLanguage, setSelectedSpeakLanguage] = useState(null);
-  const [selectedLearnLanguage, setSelectedLearnLanguage] = useState(null);
+  const [selectedSpeakLanguage, setSelectedSpeakLanguage] = useState("");
+  const [selectedLearnLanguage, setSelectedLearnLanguage] = useState("");
+  const [userName, setUserName] = useState("")
+  const [image, setImage] = useState("")
   const [step, setStep] = useState(1);
   const router = useRouter();
   console.log("selected langues", selectedLearnLanguage, selectedSpeakLanguage)
 
-  // Load the selected languages from localStorage on component mount
   useEffect(() => {
-    const storedSpeakLanguage = localStorage.getItem("selectedSpeakLanguage");
-    if (storedSpeakLanguage) {
-      setSelectedSpeakLanguage(storedSpeakLanguage);
+    const filterForLanguageImage = () => {
+      const languageFilter = languages.filter((item) => item.name === selectedLearnLanguage)
+      const imageResult = languageFilter.map((item) => item.image)
+      console.log(imageResult[0])
+      setImage(imageResult[0])
     }
+    filterForLanguageImage()
+  }, [selectedLearnLanguage])
 
-    const storedLearnLanguage = localStorage.getItem("selectedLearnLanguage");
-    if (storedLearnLanguage) {
-      setSelectedLearnLanguage(storedLearnLanguage);
-    }
-  }, []);
+  const {createProfile} = useUser()
 
   // Function to handle language selection
-  const handleLanguageSelect = (language) => {
+  const handleLanguageSelect = async(image) => {
     if (step === 1) {
-      setSelectedSpeakLanguage(language);
-      localStorage.setItem("selectedSpeakLanguage", language);
-      // Change the color of the selected spoken language
-      setStep(2); // Move to the next step
-    } else if (step === 2) {
-      setSelectedLearnLanguage(language);
-      localStorage.setItem("selectedLearnLanguage", language);
+      setSelectedSpeakLanguage(image);
+    } else {
+      setSelectedLearnLanguage(image);
     }
   };
+
+  const handleSubmit = async() => {
+    await createProfile(selectedSpeakLanguage, selectedLearnLanguage, userName, image )
+  }
 
   return (
     <div className="mx-[120px] my-[70px]">
@@ -45,16 +47,16 @@ const ProfileOnboarding = () => {
           alt="logo"
           className="w-[58px] h-[58px] object-contain"
         />
-        <span className="text-Black">Lancent</span>
+        <span className="text-Black text-[32px] font-bold">Lancent</span>
       </div>
 
       {step === 1 && (
-        <span className="flex items-center justify-center text-Black">
+        <span className="flex items-center justify-center text-[28px] text-Black">
           What language do you speak?
         </span>
       )}
       {step === 2 && (
-        <span className="flex items-center justify-center text-Black">
+        <span className="flex items-center justify-center text-[28px] text-Black">
           What language do you want to learn?
         </span>
       )}
@@ -74,6 +76,8 @@ const ProfileOnboarding = () => {
             <Image
               src={item.image}
               alt={item.name}
+              width={234}
+              height={234}
               className="w-[116px] h-[80px] object-contain"
             />
             <span className="text-Black">{item.name}</span>
@@ -82,12 +86,41 @@ const ProfileOnboarding = () => {
       </div>
 
       {step === 2 && (
+        <form action="" className="flex items-center justify-center w-full mt-10">
+                   <label className="flex flex-col items-start space-y-[8px]">
+              <span className="text-Black text-[16px] font-normal">
+                UserName
+              </span>
+              <input
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+                type="text"
+                className="bg-Grey/50 text-Black outline-none focus:outline-none border-Grey border w-full h-[45px]"
+              />
+            </label>
+        </form>
+      )}
+
+      {step === 1 && (
+        <div className="flex items-center justify-center w-full">
         <button
-          className="bg-Accent text-white px-4 py-2 mt-4"
-          onClick={() => router.push("/")} // Redirect to the home page
+          className="bg-Accent px-[145px] py-[15px] mt-11 text-Black"
+          onClick={() => setStep(2)}
         >
-          Continue
+          Next
         </button>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className="flex items-center justify-center w-full">
+        <button
+          className="bg-Accent px-[145px] py-[15px] mt-11 text-Black"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+        </div>
       )}
     </div>
   );

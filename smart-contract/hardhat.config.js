@@ -13,8 +13,8 @@ module.exports = {
     testnet_aurora: {
       url: 'https://testnet.aurora.dev',
       accounts: [`0x${AURORA_PRIVATE_KEY}`],
-      chainId: 1313161555,
-      gasPrice: 120 * 1000000000
+      // chainId: 1313161555,
+      // gasPrice: 120 * 1000000000
     },
     local_aurora: {
       url: 'http://localhost:8545',

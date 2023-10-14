@@ -8,9 +8,10 @@ import { useFlow } from "../context/FlowContext";
 import { FailedModal, WinModal } from "../components/quiz";
 
 const Quiz = () => {
+      // Initialize lives from local storage, or set it to 5 if not found.
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
-  const [lives, setLives] = useState(5);
+  const [lives, setLives] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
@@ -18,11 +19,11 @@ const Quiz = () => {
   const [showModal, setShowModal] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [failed, setFailed] = useState(false);
-  const route = useRouter();
-  const { setActive } = useFlow();
 
   useEffect(() => {
-    if (gameOver) {
+    const initialLives = typeof window !== 'undefined' ? localStorage.getItem("userLives") || 5 : 5;
+    setLives(Number(initialLives));
+    if (gameOver && lives < 0) {
       setFailed(true);
     }
   }, [gameOver]);
@@ -33,10 +34,15 @@ const Quiz = () => {
     if (answer === question.correctAnswer.toLowerCase()) {
       setCorrectAnswer(true);
     } else {
-      setLives(lives - 1);
-      setCorrectAnswer(false);
+      const newLives = lives - 1;
+      setLives(newLives);
 
-      if (lives < 1) {
+      // Store lives in local storage (only on the client side)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("userLives", newLives);
+      }
+
+      if (newLives < 1) {
         setGameOver(true);
         setFailed(true);
       }
@@ -75,6 +81,7 @@ const Quiz = () => {
             actionButton={() => {}}
           />
         )}
+
 
         {failed && (
           <FailedModal
@@ -133,7 +140,7 @@ const Quiz = () => {
             {question.options?.map((item, i) => (
               <button
                 key={i}
-                disabled={lives < 0}
+                disabled={lives < 0 && lives === 0}
                 className={`text-Black text-[24px] font-medium w-[40%] flex item-center justify-center border-2 py-[20px]   ${
                   selectedAnswer === item.toLowerCase() && correctAnswer
                     ? "border-green-500 text-green-500"
@@ -154,7 +161,7 @@ const Quiz = () => {
           <button
             onClick={handleNextQuestion}
             className="bg-Accent items-center justify-center mt-[134px] py-[20px] px-[80px] text-[20px] font-medium text-Black"
-            disabled={!correctAnswer}
+            disabled={!correctAnswer || lives === 0}
           >
             Submit answer
           </button>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply font-Epilogue-VariableFont bg-Grey/50 text-[#fff] overflow-hidden;
+  @apply font-Epilogue-VariableFont bg-gray-100 text-[#fff] overflow-hidden;
 }
 
 @font-face {

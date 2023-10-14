@@ -7,7 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const profile = await hre.ethers.deployContract("Profile");
+  const profile = await hre.ethers.deployContract("Content");
 
   await profile.waitForDeployment();
 

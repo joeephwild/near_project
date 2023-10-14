@@ -34,10 +34,16 @@ contract Profile {
         return userName;
    }
 
-   function retrieveLearnLanguage() external view returns(string memory) {
-        Account storage newAccount = account[msg.sender];
+   function retrieveLearnLanguage(address _owner) external view returns(string memory) {
+        Account storage newAccount = account[_owner];
         string memory learnLanguage = newAccount.langaugeToLearn;
         return learnLanguage;
+   }
+
+   function retriveLanugeImage(address _owner) external view returns(string memory){
+            Account storage newAccount = account[_owner];
+            string memory learnLanguageImage = newAccount.learnLanguageImage;
+            return learnLanguageImage;
    }
 
    function retriveallAccount() external view returns(Account[] memory) {
