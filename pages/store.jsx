@@ -10,7 +10,7 @@ import StoreCard from "../components/store/storeCard";
 
 
 
-function Chat() {
+function Store() {
   return (
     <div>
       <DefaultLayout>
@@ -25,4 +25,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default Store;
