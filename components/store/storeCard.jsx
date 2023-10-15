@@ -76,7 +76,7 @@ const StoreCard = () => {
           
       
            <button 
-           onClick={() => handlePurchase(item.price_in_ether)} 
+           onClick={() => handlePurchase(item.package_id, item.price_in_ether)} 
            className='bg-Accent flex items-center text-Black justify-center py-[15px] mt-3 space-x-2 w-full'>
              Buy Now {item.price_in_ether}
            </button>
