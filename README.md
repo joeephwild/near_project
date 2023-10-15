@@ -38,6 +38,7 @@ Lacent boasts a range of exciting features:
 ## Demo
 
 ![Firefox 15_10_2023 20_46_35](https://github.com/joeephwild/near_project/assets/100144413/9299efc8-46fd-4ca6-aced-2b26fe18c30f)
+https://www.loom.com/share/995c34d14e84493da7dbba35887f02f3.mp4
 
 ## Usage
 
