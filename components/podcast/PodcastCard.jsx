@@ -18,7 +18,7 @@ const PodcastCard = () => {
         <div key={i}>
           <Image src={item.contentImage} alt="image" width={234} height={234} className='w-full h-[86px] object-cover' />
           <div className='flex flex-col mt-3 space-y-3 items-start'>
-            <h2 className='text-[13px] font-semibold text-Black'>{item.contentName}</h2>
+            <h2 className='text-lg font-semibold text-Black'>{item.contentName}</h2>
             <p className='text-Grey text-sm'>{item.contentDescription}</p>
             <div className='flex items-center justify-between w-full space-x-4'>
               <div className='flex items-center space-x-2'>

@@ -48,13 +48,7 @@ import { useUser } from '../context/ProfileContext';
 
                   {!userLearnImage && (
                               <Link href="/profileOnboarding">
-                              <Image
-                                src={korean}
-                                alt="language"
-                                width={234}
-                                height={234}
-                                className="w-[35.2px] h-[24px] object-contain"
-                              />
+                           <button className='bg-Accent px-6 py-2.5 text-Black font-semibold'>Pick a Language</button>
                             </Link>
                     )}
 
@@ -62,7 +56,7 @@ import { useUser } from '../context/ProfileContext';
               <BellIcon className="text-[#667185] w-[28px]" />
 
               <button
-                // onClick={logOut}
+                onClick={openAccountModal}
                 className="flex items-center space-x-[10px]"
               >
                 <Avatar name={`${accountName}`} className="rounded-full" size="48px" />

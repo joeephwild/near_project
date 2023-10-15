@@ -114,7 +114,8 @@ export const LacentContentProvider = ({ children }) => {
             setModalOpen,
             createAContent,
             allContent,
-            purcahseAContent
+            purcahseAContent,
+            conectwithContract
         }}>
             {children}
         </LacentContentContext.Provider>

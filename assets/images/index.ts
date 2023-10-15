@@ -23,6 +23,7 @@ import main from './main.png'
 import plant from './plant.png'
 import boy from './image.png'
 import success from './success.png'
+import reward from './reward.png'
 
 export {
   logo,
@@ -49,5 +50,6 @@ export {
   main,
   plant,
   boy,
-  success
+  success,
+  reward
 };

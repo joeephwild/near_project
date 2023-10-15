@@ -18,6 +18,7 @@ import {
   podcast3,
   polish,
   profile,
+  reward,
   spanish,
 } from "../assets/images";
 
@@ -50,7 +51,7 @@ export const SidebarTab = [
     name: "Store",
     icons: ArchiveIcon,
     active: "chat",
-    route: "/Chat",
+    route: "/store",
   },
 ];
 
@@ -323,3 +324,27 @@ export const quizDataKoreanToEnglish = [
     correctAnswer: "We play soccer with friends.",
   },
 ];
+
+export const Packages =  [
+  {
+    package_id: 1,
+    name: "Bronze Package",
+    image_url: reward,
+    price_in_ether: 0.005,
+    lives_received: 20
+  },
+  {
+    package_id: 2,
+    name: "Silver Package",
+    image_url: reward,
+    price_in_ether: 0.01,
+    lives_received: 30
+  },
+  {
+    package_id: 3,
+    name: "Gold Package",
+    image_url: reward,
+    price_in_ether: 0.02,
+    lives_received: 50
+  }
+]

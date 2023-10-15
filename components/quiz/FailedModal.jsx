@@ -34,10 +34,9 @@ const FailedModal = ({ closeModal, actionButton }) => {
         <div className="w-full mt-8">
           <button
             className="bg-Accent w-full text-center rounded font-semibold py-4"
-            // onClick={() => route.push("/podcast")}
-            // onClick={claimNft}
+            onClick={() => route.push("/heart")}
           >
-            Go to podcast
+            Purchase An Hearts
           </button>
         </div>
       </div>
