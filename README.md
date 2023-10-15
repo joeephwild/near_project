@@ -1,69 +1,74 @@
-This is a scaffold for an FCL NextJS Dapp on the Flow Blockchain.
+# Lacent Language Learning DApp
 
-## Features Provided
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [NFT Rewards](#nft-rewards)
+- [Mentor Program](#mentor-program)
+- [Shop](#shop)
+- [Language Community](#LanguageCommunity)
+- [Contributing](#contributing)
+- [License](#license)
 
-- FCL setup and configuration
-- "flow dev" integration for automatic local account creation and contract deployment
-- Wallet Discovery (including Dev Wallet on Emulator)
-- CLI private key separation for security
-- Flow.json loading for contract placeholders
-- Authentication
-- CDC file loader
-- Custom hooks
-- Deployment 
+## Introduction
 
-## Featues TODO
+Lacent is a cutting-edge language learning DApp that offers an immersive and interactive language learning experience. This README provides an overview of its features, how to get started, and how contributors can participate in the project.
 
-- Mainnet deployment
-- JS Testing
+## Features
 
-## Running the App
+Lacent boasts a range of exciting features:
 
-First run:
+1. **Quiz**: Engage in interactive quizzes to test and improve your language skills.
 
-```
-npm install
-```
+2. **NFT Rewards**: Earn non-fungible tokens (NFTs) as rewards for completing quizzes and making progress.
 
-### Local with Flow Dev, the Emulator, and Dev Wallet
+3. **Mentor Program**: Connect with language mentors who can provide personalized guidance and content. Mentors can earn compensation for their contributions.
 
-Run the following to run Flow Dev, the Emulator, and Dev Wallet:
+4. **Shop**: Purchase "lives" to use in the quiz, allowing you to continue practicing without interruption.
 
-```bash
-npm run dev:local
-```
+5. **Podcast**: Upload and purrchase a podcast and elevate your learning skill, with possibility to upload content like music, podcast and also audiobooks for your followers.
 
-Note: Flow Dev will will automatically create new accounts and deploy for you while developing. Your flow.json will be updated automatically. Committing these changes for local development is unncessary.
+6. **Community**: Join and interact ina communities to elevate your skills in particular langauge and meet up with people who also want to learn and grow.
 
-### Testnet
+## Demo
 
-If you haven't yet created a testnet account, in the CLI run:
+![Firefox 15_10_2023 20_46_35](https://github.com/joeephwild/near_project/assets/100144413/9299efc8-46fd-4ca6-aced-2b26fe18c30f)
 
-```
-flow accounts create
-```
+## Usage
 
-Follow the steps and select testnet. This will create a `[name].pkey` file (make sure this is gitignored) and add your account to flow.json.
+To use the Lacent dapp is very simple and straight forward, users have to visit the [Link](https://near-project.vercel.app/), users have to follow some very simple steps.
 
-Then in `flow.json`, add the contracts you'd like to be deployed to testnet under this account:
+1. **Connect Wallet**: users will have to ceonnect their wallet, which is made easy for even people new to the web3 space, with account abstraction this is made simplified using your email or any web2 provider.
 
-```
-// Inside of "deployments"
-"testnet": {
-  "testnet-account": [
-    "HelloWorld"
-  ]
-}
-```
+2. **Pick A Language and Create a profile**: If you havent created a profile a button displays on the navbar where you can just select a language and also input a username, quite easy 😉
 
-Then run:
+## NFT Rewards
 
-```
-npm run dev:testnet:deploy
-``` 
+Lacent rewards users with NFTs for their language learning achievements. These digital collectibles can be viewed, traded, or showcased in your collection. NFTs are a unique way to showcase your language learning progress.
 
-Whenever you need to redeploy changed contracts to Testnet while seeing the diff between deployed contracts and updates being pushed, you can run:
+## Mentor Program
 
-```
-npm run dev:testnet:update
-```
+Lacent's Mentor Program allows experienced language learners to share their knowledge and content with others. Mentors can set their own prices for their services, and users can access personalized language content and guidance.
+
+## Shop
+
+In the Lacent Shop, users can purchase additional "lives" for the quiz, ensuring uninterrupted language learning practice. This in-app currency helps keep users engaged and motivated.
+
+## Language Community
+
+With varity of community option, users can join a community and chat with users in the community. Giving the opportunity to interact.
+
+and many more features.
+
+## Contributing
+
+We welcome and encourage contributions to Lacent. Whether you're a developer, designer, or language enthusiast, you can contribute to the project. See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get involved.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
